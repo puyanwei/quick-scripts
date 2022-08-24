@@ -10,14 +10,19 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.quickScripts"
+    "onCommand:extension.addButton",
+    "onCommand:extension.deleteButton"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.quickScripts",
-        "title": "Quick Scripts"
+        "command": "extension.addButton",
+        "title": "Quick Scripts: Add button"
+      },
+      {
+        "command": "extension.deleteButton",
+        "title": "Quick Scripts: Delete button"
       }
     ]
   },

@@ -16,31 +16,41 @@ export async function activate(context: ExtensionContext) {
     workspaceState.forEach(({ name, command }) => createButton(name, command))
   }
 
-  const quickScripts = commands.registerCommand(
-    'extension.quickScripts',
-    async () => {
-      const command = await window.showInputBox({
-        prompt: 'Add in the script command you want to run in the terminal',
-      })
+  const deleteButton = commands.registerCommand('extension.deleteButton', () =>
+    implementDeleteButton()
+  )
+  const addButton = commands.registerCommand('extension.addButton', () =>
+    implementAddButton()
+  )
 
-      if (!command) {
-        window.showErrorMessage('No command provided')
-        return
-      }
-      const name = await window.showInputBox({
-        prompt: 'Name of the button',
-      })
+  async function implementAddButton() {
+    const command = await window.showInputBox({
+      prompt: 'Add in the script command you want to run in the terminal',
+    })
 
-      if (!name) {
-        window.showErrorMessage('No name provided')
-        return
-      }
-      await createButton(name!, command!)
-      await updateState(context, name, command)
+    if (!command) {
+      window.showErrorMessage('No command provided')
       return
     }
-  )
-  context.subscriptions.push(quickScripts)
+    const name = await window.showInputBox({
+      prompt: 'Name of the button',
+    })
+
+    if (!name) {
+      window.showErrorMessage('No name provided')
+      return
+    }
+    await createButton(name!, command!)
+    await updateState(context, name, command)
+    return
+  }
+
+  function implementDeleteButton() {
+    window.showInformationMessage('Delete button stuff here')
+    return
+  }
+
+  context.subscriptions.push(addButton, deleteButton)
 }
 
 export function deactivate() {}
