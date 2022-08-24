@@ -19,17 +19,24 @@ export function isObjectEmpty(obj: any): boolean {
 export async function getState(
   context: ExtensionContext
 ): Promise<string | undefined> {
-  const value: string | undefined = await context.workspaceState.get('BOB')
+  const value: string | undefined = await context.workspaceState.get('qsState')
   return value
 }
 export async function updateState(
   context: ExtensionContext,
-  value: string
+  name: string,
+  command: string
 ): Promise<void> {
-  await context.workspaceState.update('BOB', value)
+  const newValue = [{ name, command }]
+  const currentValue = (await getState(context)) || null
+
+  const value = !!currentValue
+    ? [...JSON.parse(currentValue), ...newValue]
+    : [...newValue]
+  await context.workspaceState.update('qsState', JSON.stringify(value))
   return
 }
 export async function resetState(context: ExtensionContext): Promise<void> {
-  await updateState(context, '')
+  await context.workspaceState.update('qsState', '')
   return
 }

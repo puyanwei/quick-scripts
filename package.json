@@ -1,6 +1,6 @@
 {
-  "name": "Quick Scripts",
-  "displayName": "quick-scripts",
+  "name": "quick-scripts",
+  "displayName": "quick scripts",
   "description": "A script to create a button which runs a script in the terminal",
   "version": "0.0.1",
   "engines": {
@@ -10,13 +10,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:button.quickScripts"
+    "onCommand:extension.quickScripts"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "button.quickScripts",
+        "command": "extension.quickScripts",
         "title": "Quick Scripts"
       }
     ]

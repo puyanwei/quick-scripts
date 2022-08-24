@@ -8,31 +8,39 @@ interface WorkspaceState {
 
 export async function activate(context: ExtensionContext) {
   // resetState(context)
-  // context.workspaceState.update('BOB', 'EGG')
 
-  const value = await getState(context)
+  const initialState = await getState(context)
 
-  if (value || value !== '') {
-    const workspaceState: WorkspaceState[] = await JSON.parse(value!)
+  if (!!initialState && initialState !== '') {
+    const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
     workspaceState.forEach(({ name, command }) => createButton(name, command))
   }
 
-  const addButton = commands.registerCommand(
-    'extension.addButton',
+  const quickScripts = commands.registerCommand(
+    'extension.quickScripts',
     async () => {
       const command = await window.showInputBox({
         prompt: 'Add in the script command you want to run in the terminal',
       })
 
+      if (!command) {
+        window.showErrorMessage('No command provided')
+        return
+      }
       const name = await window.showInputBox({
         prompt: 'Name of the button',
       })
 
+      if (!name) {
+        window.showErrorMessage('No name provided')
+        return
+      }
       await createButton(name!, command!)
+      await updateState(context, name, command)
       return
     }
   )
-  context.subscriptions.push(addButton)
+  context.subscriptions.push(quickScripts)
 }
 
 export function deactivate() {}
