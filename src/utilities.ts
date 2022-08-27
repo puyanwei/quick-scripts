@@ -8,7 +8,7 @@ export function createButton(name: string, command: string) {
   statusBar.tooltip = name
   statusBar.show()
   window.onDidOpenTerminal((terminal) => terminal.sendText(command!))
-  return
+  return statusBar
 }
 
 export function isObjectEmpty(obj: any): boolean {
@@ -34,7 +34,7 @@ export async function addSingleObjectToState({
   context,
   name,
   command,
-}: AddSingleObjectToState): Promise<void> {
+}: AddSingleObjectToState) {
   const newValue = [{ name, command }]
   const currentValue = (await getState(context)) || null
 

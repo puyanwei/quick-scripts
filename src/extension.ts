@@ -22,7 +22,6 @@ export async function activate(context: ExtensionContext) {
   const addButton = commands.registerCommand('extension.addButton', () =>
     addButtonScript(context)
   )
-
   //debugging scripts
   const viewState = commands.registerCommand('extension.viewState', () =>
     viewStateScript(context)
