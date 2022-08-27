@@ -39,14 +39,13 @@ export async function deleteButtonScript(context: ExtensionContext) {
     { title: 'Choose a button to delete. Warning: this will reload the window' }
   )
   if (!buttonSelection) return window.showErrorMessage('No button selected')
-
-  if (buttonSelection === 'Delete all') {
-    resetStateScript(context)
+  if (buttonSelection === 'Delete all') resetStateScript(context)
+  if (buttonSelection !== 'Delete all') {
+    const newState = buttonNamesParsed.filter(
+      ({ name }) => name !== buttonSelection
+    )
+    await updateState(context, newState)
   }
-  const newState = buttonNamesParsed.filter(
-    ({ name }) => name !== buttonSelection
-  )
-  await updateState(context, newState)
   commands.executeCommand('workbench.action.reloadWindow')
   return
 }
