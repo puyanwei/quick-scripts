@@ -1,6 +1,6 @@
 import { commands, ExtensionContext } from 'vscode'
 import { addButtonScript, deleteButtonScript } from './buttonScripts'
-import { resetStateScript, seeStateScript } from './debuggingHelpers'
+import { resetStateScript, viewStateScript } from './debuggingHelpers'
 import { getState, createButton } from './utilities'
 
 export interface WorkspaceState {
@@ -10,7 +10,7 @@ export interface WorkspaceState {
 
 export async function activate(context: ExtensionContext) {
   const initialState = await getState(context)
-  // Load state is there is any
+  // Load button state(s) is there is any
   if (!!initialState && initialState !== '') {
     const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
     workspaceState.forEach(({ name, command }) => createButton(name, command))
@@ -24,14 +24,14 @@ export async function activate(context: ExtensionContext) {
   )
 
   //debugging scripts
-  const seeState = commands.registerCommand('extension.seeState', () =>
-    seeStateScript(context)
+  const viewState = commands.registerCommand('extension.viewState', () =>
+    viewStateScript(context)
   )
   const resetState = commands.registerCommand('extension.resetState', () =>
     resetStateScript(context)
   )
 
-  context.subscriptions.push(addButton, deleteButton, seeState, resetState)
+  context.subscriptions.push(addButton, deleteButton, viewState, resetState)
 }
 
 export function deactivate() {}
