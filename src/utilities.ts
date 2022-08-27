@@ -1,13 +1,19 @@
-import { window, StatusBarAlignment, ExtensionContext } from 'vscode'
+import {
+  window,
+  StatusBarAlignment,
+  ExtensionContext,
+  StatusBarItem,
+} from 'vscode'
 import { WorkspaceState } from './extension'
 
-export function createButton(name: string, command: string): void {
+export function createButton(name: string, command: string): StatusBarItem {
   const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, 0)
   statusBar.text = name
   statusBar.command = `workbench.action.terminal.new`
   statusBar.tooltip = name
   statusBar.show()
   window.onDidOpenTerminal((terminal) => terminal.sendText(command!))
+  return statusBar
 }
 
 export function isObjectEmpty(obj: any): boolean {
@@ -23,17 +29,27 @@ export async function getState(
   const value: string | undefined = await context.workspaceState.get('qsState')
   return value
 }
-export async function addSingleState(
-  context: ExtensionContext,
-  name: string,
+
+interface AddSingleObjectToState {
+  context: ExtensionContext
+  name: string
   command: string
-): Promise<void> {
+  statusBarItem: StatusBarItem
+}
+export async function addSingleObjectToState({
+  context,
+  name,
+  command,
+  statusBarItem,
+}: AddSingleObjectToState): Promise<void> {
   const newValue = [{ name, command }]
   const currentValue = (await getState(context)) || null
 
   const value = !!currentValue
-    ? [...JSON.parse(currentValue), ...newValue]
-    : [...newValue]
+    ? [...JSON.parse(currentValue), ...newValue, statusBarItem]
+    : [...newValue, statusBarItem] // If is first button added
+
+  console.log({ value })
   await context.workspaceState.update('qsState', JSON.stringify(value))
   return
 }
@@ -43,10 +59,5 @@ export async function updateState(
   state: WorkspaceState[]
 ) {
   context.workspaceState.update('qsState', JSON.stringify(state))
-  return
-}
-
-export async function resetState(context: ExtensionContext): Promise<void> {
-  await context.workspaceState.update('qsState', '')
   return
 }
