@@ -1,9 +1,4 @@
-import {
-  window,
-  StatusBarAlignment,
-  ExtensionContext,
-  StatusBarItem,
-} from 'vscode'
+import { window, StatusBarAlignment, ExtensionContext } from 'vscode'
 import { WorkspaceState } from './extension'
 
 export function createButton(name: string, command: string) {
