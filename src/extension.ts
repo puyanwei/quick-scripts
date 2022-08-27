@@ -1,10 +1,10 @@
 import { commands, window, ExtensionContext } from 'vscode'
+import { resetStateScript, seeStateScript } from './test/debuggingHelpers'
 import {
   getState,
-  addSingleState,
   createButton,
-  resetState,
   updateState,
+  addSingleObjectToState,
 } from './utilities'
 
 export interface WorkspaceState {
@@ -16,7 +16,7 @@ export async function activate(context: ExtensionContext) {
   // resetState(context)
 
   const initialState = await getState(context)
-
+  // Load state is there is any
   if (!!initialState && initialState !== '') {
     const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
     workspaceState.forEach(({ name, command }) => createButton(name, command))
@@ -30,6 +30,9 @@ export async function activate(context: ExtensionContext) {
   )
   const seeState = commands.registerCommand('extension.seeState', () =>
     seeStateScript(context)
+  )
+  const resetState = commands.registerCommand('extension.resetState', () =>
+    resetStateScript(context)
   )
 
   async function addButtonScript() {
@@ -46,23 +49,18 @@ export async function activate(context: ExtensionContext) {
     if (!name) return window.showErrorMessage('No name provided')
 
     await createButton(name!, command!)
-    await addSingleState(context, name, command)
-    return
-  }
-
-  async function seeStateScript(context: ExtensionContext) {
-    const state = await getState(context)
-    console.log({ state })
+    await addSingleObjectToState({ context, name, command })
     return
   }
 
   async function deleteButtonScript(context: ExtensionContext) {
     const currentState = await getState(context)
-    if (!currentState) {
+
+    if (!currentState || currentState === '[]') {
       window.showErrorMessage('No buttons to delete')
       return
     }
-    const buttonNamesParsed: WorkspaceState[] = JSON.parse(currentState)
+    const buttonNamesParsed: WorkspaceState[] = JSON.parse(currentState!)
     const buttonNames = buttonNamesParsed.map(({ name }) => name)
     const buttonSelection = await window.showQuickPick(buttonNames)
     if (!buttonSelection) return window.showErrorMessage('No button selected')
@@ -70,11 +68,18 @@ export async function activate(context: ExtensionContext) {
     const newState = buttonNamesParsed.filter(
       ({ name }) => name !== buttonSelection
     )
-    updateState(context, newState)
+    await updateState(context, newState)
+
+    // Update status bar items
+    // statusBarItems.forEach((item) => {
+    //   if (!!item.name) return
+    //   if (item?.name === buttonSelection) item.hide()
+    // })
+
     return
   }
 
-  context.subscriptions.push(addButton, deleteButton, seeState)
+  context.subscriptions.push(addButton, deleteButton, seeState, resetState)
 }
 
 export function deactivate() {}
