@@ -1,4 +1,5 @@
 import { window, StatusBarAlignment, ExtensionContext } from 'vscode'
+import { WorkspaceState } from './extension'
 
 export function createButton(name: string, command: string): void {
   const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, 0)
@@ -22,7 +23,7 @@ export async function getState(
   const value: string | undefined = await context.workspaceState.get('qsState')
   return value
 }
-export async function updateState(
+export async function addSingleState(
   context: ExtensionContext,
   name: string,
   command: string
@@ -36,6 +37,15 @@ export async function updateState(
   await context.workspaceState.update('qsState', JSON.stringify(value))
   return
 }
+
+export async function updateState(
+  context: ExtensionContext,
+  state: WorkspaceState[]
+) {
+  context.workspaceState.update('qsState', JSON.stringify(state))
+  return
+}
+
 export async function resetState(context: ExtensionContext): Promise<void> {
   await context.workspaceState.update('qsState', '')
   return

@@ -11,7 +11,8 @@
   ],
   "activationEvents": [
     "onCommand:extension.addButton",
-    "onCommand:extension.deleteButton"
+    "onCommand:extension.deleteButton",
+    "onCommand:extension.seeState"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -23,6 +24,10 @@
       {
         "command": "extension.deleteButton",
         "title": "Quick Scripts: Delete button"
+      },
+      {
+        "command": "extension.seeState",
+        "title": "Quick Scripts: See state"
       }
     ]
   },
