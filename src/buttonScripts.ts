@@ -14,10 +14,8 @@ export async function addButtonScript(context: ExtensionContext) {
   })
   if (!command) return window.showErrorMessage('No command provided')
 
-  const name = await window.showInputBox({
-    prompt: 'Name of the button',
-  })
-  if (!name) return window.showErrorMessage('No name provided')
+  const name = await nameInput()
+  if (!name) return
 
   await createButton(name!, command!)
   await addSingleObjectToState({ context, name, command })
@@ -47,5 +45,22 @@ export async function deleteButtonScript(context: ExtensionContext) {
     await updateState(context, newState)
   }
   commands.executeCommand('workbench.action.reloadWindow')
+  return
+}
+
+async function nameInput() {
+  const input = await window.showInputBox({
+    prompt: 'Add the name of the button (max 5 chars)',
+  })
+
+  if (!input) {
+    window.showErrorMessage('No name provided')
+    return
+  }
+  if (input.length! > 5) {
+    window.showErrorMessage('Name is too long')
+    nameInput()
+  }
+  if (input.length < 6) return input
   return
 }
