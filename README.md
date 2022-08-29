@@ -34,6 +34,12 @@ Then select the button you wish to delete, or delete them all.
 
 Once selected, this will reload VS Code and remove the button from the status bar.
 
+## Bugs
+
+This is my first VS code extension and I used this project to learn and get the experience of the process.
+
+Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues) or pull request if you find any bugs or have any suggestions. 🙏
+
 ## Socials
 
 Feel free to follow me or if your feeling generous buy me a coffee!
