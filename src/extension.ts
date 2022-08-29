@@ -1,7 +1,10 @@
 import { commands, ExtensionContext } from 'vscode'
-import { addButtonScript, deleteButtonScript } from './buttonScripts'
+import {
+  addButtonScript,
+  deleteButtonScript,
+  loadInitialState,
+} from './buttonScripts'
 import { resetStateScript, viewStateScript } from './debuggingHelpers'
-import { getState, createButton } from './utilities'
 
 export interface WorkspaceState {
   name: string
@@ -9,12 +12,7 @@ export interface WorkspaceState {
 }
 
 export async function activate(context: ExtensionContext) {
-  const initialState = await getState(context)
-  // Load button state(s) is there is any
-  if (!!initialState && initialState !== '') {
-    const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
-    workspaceState.forEach(({ name, command }) => createButton(name, command))
-  }
+  await loadInitialState(context)
 
   const deleteButton = commands.registerCommand('extension.deleteButton', () =>
     deleteButtonScript(context)

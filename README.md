@@ -1,5 +1,7 @@
 # Quick Scripts
 
+![quick-scripts](https://user-images.githubusercontent.com/14803518/187287774-bc2ef2bd-94cb-421c-8f33-94b262259ec4.png)
+
 Add buttons to the status bar to quickly execute scripts!
 
 I found it annoying constantly typing in the terminal or finding the NPM script sidebar button to run my scripts so I created this simple application.
@@ -44,7 +46,7 @@ This is my first VS code extension and I used this project to learn and get the 
 
 - Currently the extension does not seem to load the workspace state correctly. The buttons are there but only visually load after you trigger one of the add/delete button scripts and exit out of it. I am working on a fix for this.
 
-Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues) or pull request if you find any bugs or have any suggestions. 🙏
+Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues) if you find any bugs or have any suggestions. This is a side project so expanding the features is unlikely, but feel free to fork and submit a PR if you can code it and I'd be happy to review it and add it in 🙏
 
 ## Socials
 

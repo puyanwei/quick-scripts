@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.0.3 (2022-08-29)]
 
+- Update readme to correct previous assumption about the bug, and how to trigger a temporary fix.
+- Some code refactoring
+- Add icon to readme
+
 ## [0.0.2 (2022-08-29)]
 
 - Update readme with solution to scripts not at root
