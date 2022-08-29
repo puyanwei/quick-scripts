@@ -2,6 +2,10 @@
   "name": "quick-scripts",
   "displayName": "quick scripts",
   "description": "A script to create a status bar button which runs a script in the terminal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puyanwei/quick-scripts-v2"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.70.0"
