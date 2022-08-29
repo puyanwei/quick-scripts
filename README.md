@@ -14,6 +14,8 @@ Add a button by opening the command palette (Command + Shift + P) and finding th
 
 Once selected, add the script you would like to use. In this example we are using package.json and running a frontend project with storybook, so the script would be `yarn run storybook`.
 
+Note that the terminal will always run at the root if your project, so it is recommended you prefix your script with `yarn --cwd <path> <command>`. For example if the package.json is in the next folder you would run `yarn --cwd ./next dev`.
+
 ![2](https://user-images.githubusercontent.com/14803518/187247902-0fb262c4-7020-4203-bfb3-42dbbe0a8a3f.png)
 
 Name the button to add it to the status bar. Button names are limited to 5 characters.
@@ -37,6 +39,8 @@ Once selected, this will reload VS Code and remove the button from the status ba
 ## Bugs
 
 This is my first VS code extension and I used this project to learn and get the experience of the process.
+
+- Currently the extension does not seem to save state on the workspaces. I am working on a fix for this. For now if you do not close your project, the buttons will stay.
 
 Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues) or pull request if you find any bugs or have any suggestions. 🙏
 
