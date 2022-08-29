@@ -1,15 +1,18 @@
 {
   "name": "quick-scripts",
-  "displayName": "quick scripts",
+  "displayName": "Quick Scripts - Make Status Bar Buttons to run Scripts",
   "description": "A script to create a status bar button which runs a script in the terminal",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/puyanwei/quick-scripts-v2"
+  "publisher": "Puyan Wei",
+  "license": "MIT",
+  "repository": "https://github.com/puyanwei/quick-scripts-v2",
+  "bugs": {
+    "url": "https://github.com/puyanwei/quick-scripts-v2/issues"
   },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.70.0"
   },
+  "icon": "quick-scripts.png",
   "categories": [
     "Other"
   ],
