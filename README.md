@@ -22,7 +22,9 @@ Name the button to add it to the status bar. Button names are limited to 5 chara
 
 ![3](https://user-images.githubusercontent.com/14803518/187247903-aba4a218-dfeb-4dc1-b3d6-3a585b565aa3.png)
 
-Button now shows up in the status bar. Clicking it will open a new terminal and run the script.
+Button now shows up in the status bar as `SB`. Clicking it will open a new terminal and run the script.
+
+![Screenshot 2022-08-29 at 20 02 10](https://user-images.githubusercontent.com/14803518/187278153-e2dd233e-1eb8-44c6-ad33-8284bd6da698.png)
 
 #### Removing a button
 
@@ -40,7 +42,7 @@ Once selected, this will reload VS Code and remove the button from the status ba
 
 This is my first VS code extension and I used this project to learn and get the experience of the process.
 
-- Currently the extension does not seem to save state on the workspaces. I am working on a fix for this. For now if you do not close your project, the buttons will stay.
+- Currently the extension does not seem to load the workspace state correctly. The buttons are there but only visually load after you trigger one of the add/delete button scripts and exit out of it. I am working on a fix for this.
 
 Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues) or pull request if you find any bugs or have any suggestions. 🙏
 

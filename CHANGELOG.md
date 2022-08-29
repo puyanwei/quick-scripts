@@ -1,8 +1,10 @@
 # Change Log
 
-All notable changes to the "eggy" extension will be documented in this file.
+All notable changes to the Quick Scripts extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+
+## [0.0.3 (2022-08-29)]
 
 ## [0.0.2 (2022-08-29)]
 
