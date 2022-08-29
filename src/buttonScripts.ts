@@ -50,7 +50,7 @@ export async function deleteButtonScript(context: ExtensionContext) {
 
 async function nameInput() {
   const input = await window.showInputBox({
-    prompt: 'Add the name of the button (max 5 chars)',
+    prompt: 'Add the name of the button (max 5 characters)',
   })
 
   if (!input) {

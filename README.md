@@ -2,70 +2,43 @@
 
 Add buttons to the status bar to quickly execute scripts!
 
+I found it annoying constantly typing in the terminal or finding the NPM script sidebar button to run my scripts so I created this simple application.
+
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+#### Adding a button
 
-For example if there is an image subfolder under your extension project workspace:
+Add a button by opening the command palette (Command + Shift + P) and finding the quick scripts option by typing it in.
 
-\!\[feature X\]\(images/feature-x.png\)
+![1](https://user-images.githubusercontent.com/14803518/187247899-2cf7d571-2c31-4348-9d66-f2d009aa4e75.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Once selected, add the script you would like to use. In this example we are using package.json and running a frontend project with storybook, so the script would be `yarn run storybook`.
 
-## Requirements
+![2](https://user-images.githubusercontent.com/14803518/187247902-0fb262c4-7020-4203-bfb3-42dbbe0a8a3f.png)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Name the button to add it to the status bar. Button names are limited to 5 characters.
 
-## Extension Settings
+![3](https://user-images.githubusercontent.com/14803518/187247903-aba4a218-dfeb-4dc1-b3d6-3a585b565aa3.png)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Button now shows up in the status bar. Clicking it will open a new terminal and run the script.
 
-For example:
+#### Removing a button
 
-This extension contributes the following settings:
+Delete a button by opening the command palette (Command + Shift + P) and finding the quick scripts option by typing it in.
 
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+![4](https://user-images.githubusercontent.com/14803518/187247893-7c14a183-e720-4227-8b34-86f7cefdf1d5.png)
 
-## Known Issues
+Then select the button you wish to delete, or delete them all.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+![5](https://user-images.githubusercontent.com/14803518/187247905-d5d40806-59d0-498e-a36a-5757f46d22c9.png)
 
-## Release Notes
+Once selected, this will reload VS Code and remove the button from the status bar.
 
-Users appreciate release notes as you update your extension.
+## Socials
 
-### 1.0.0
+Feel free to follow me or if your feeling generous buy me a coffee!
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[Github](https://github.com/puyanwei)
+[Twitter](https://twitter.com/therealp_yan)
+[Medium blog](https://medium.com/@pyan)
+[Coffee](https://www.buymeacoffee.com/puyanwei)
