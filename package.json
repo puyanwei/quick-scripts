@@ -17,8 +17,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.addButton",
-    "onCommand:extension.deleteButton"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
