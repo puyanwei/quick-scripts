@@ -5,7 +5,7 @@ export function createButton(name: string, command: string) {
   const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, 0)
   statusBar.text = name
   statusBar.command = `workbench.action.terminal.new`
-  statusBar.tooltip = name
+  statusBar.tooltip = command
   statusBar.show()
   window.onDidOpenTerminal((terminal) => terminal.sendText(command!))
   return statusBar
@@ -18,6 +18,7 @@ export function isObjectEmpty(obj: any): boolean {
     Object.getPrototypeOf(obj) === Object.prototype
   )
 }
+
 export async function getState(
   context: ExtensionContext
 ): Promise<string | undefined> {
