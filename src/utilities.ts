@@ -7,7 +7,9 @@ export function createButton(name: string, command: string) {
   statusBar.command = `workbench.action.terminal.new`
   statusBar.tooltip = name
   statusBar.show()
-  window.onDidOpenTerminal((terminal) => terminal.sendText(command!))
+  const terminal = window.createTerminal(`TERMINAL ONE`)
+  console.log(command)
+  terminal.sendText(command)
   return statusBar
 }
 

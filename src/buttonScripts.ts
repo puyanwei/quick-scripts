@@ -8,6 +8,15 @@ import {
   updateState,
 } from './utilities'
 
+export async function loadInitialState(context: ExtensionContext) {
+  const initialState = await getState(context)
+  // Load button state(s) is there is any
+  if (!!initialState && initialState !== '') {
+    const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
+    workspaceState.forEach(({ name, command }) => createButton(name, command))
+  }
+}
+
 export async function addButtonScript(context: ExtensionContext) {
   const command = await window.showInputBox({
     prompt: 'Add in the script command you want to run in the terminal',
@@ -63,13 +72,4 @@ async function nameInput() {
   }
   if (input.length < 6) return input
   return
-}
-
-export async function loadInitialState(context: ExtensionContext) {
-  const initialState = await getState(context)
-  // Load button state(s) is there is any
-  if (!!initialState && initialState !== '') {
-    const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
-    workspaceState.forEach(({ name, command }) => createButton(name, command))
-  }
 }
