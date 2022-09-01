@@ -1,20 +1,28 @@
-import { window, ExtensionContext, commands } from 'vscode'
+import { window, ExtensionContext, commands, StatusBarAlignment } from 'vscode'
 import { resetStateScript } from './debuggingHelpers'
 import { WorkspaceState } from './extension'
-import {
-  createButton,
-  addSingleObjectToState,
-  getState,
-  updateState,
-} from './utilities'
+import { addSingleObjectToState, getState, updateState } from './utilities'
 
 export async function loadInitialState(context: ExtensionContext) {
   const initialState = await getState(context)
-  // Load button state(s) is there is any
+  // Load button state(s) if there is any
   if (!!initialState && initialState !== '') {
     const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
     workspaceState.forEach(({ name, command }) => createButton(name, command))
   }
+}
+
+export function createButton(name: string, command: string) {
+  const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, 0)
+  statusBar.text = name
+  statusBar.command = {
+    title: name,
+    command: `extension.createTerminal`,
+    arguments: [name, command],
+  }
+  statusBar.tooltip = command
+  statusBar.show()
+  return statusBar
 }
 
 export async function addButtonScript(context: ExtensionContext) {
