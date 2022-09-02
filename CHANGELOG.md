@@ -4,6 +4,13 @@ All notable changes to the Quick Scripts extension will be documented in this fi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.5 (2022-08-29)]
+
+- Fixed issue with terminals not acting as expected
+- Some code refactoring clean up
+- Add rollover to see script
+- Add icon to readme
+
 ## [0.0.4 (2022-08-29)]
 
 - Update readme to correct previous assumption about the bug, and how to trigger a temporary fix.

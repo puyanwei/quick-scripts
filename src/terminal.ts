@@ -2,7 +2,6 @@ import { window } from 'vscode'
 
 export function createTerminalScript(...args: string[]) {
   const [name, command] = args
-  console.log({ name, command })
   if (!name) {
     console.warn('No name provided')
     return

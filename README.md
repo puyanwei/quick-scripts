@@ -16,8 +16,6 @@ Add a button by opening the command palette (Command + Shift + P) and finding th
 
 Once selected, add the script you would like to use. In this example we are using package.json and running a frontend project with storybook, so the script would be `yarn run storybook`.
 
-Note that the terminal will always run at the root if your project, so it is recommended you prefix your script with `yarn --cwd <path> <command>`. For example if the package.json is in the next folder you would run `yarn --cwd ./next dev`.
-
 ![2](https://user-images.githubusercontent.com/14803518/187247902-0fb262c4-7020-4203-bfb3-42dbbe0a8a3f.png)
 
 Name the button to add it to the status bar. Button names are limited to 5 characters.
@@ -27,6 +25,12 @@ Name the button to add it to the status bar. Button names are limited to 5 chara
 Button now shows up in the status bar as `SB`. Clicking it will open a new terminal and run the script.
 
 ![Screenshot 2022-08-29 at 20 02 10](https://user-images.githubusercontent.com/14803518/187278153-e2dd233e-1eb8-44c6-ad33-8284bd6da698.png)
+
+Note that the terminal will always run at the root if your project, so it is recommended you prefix your script with the path to where the script is using it with `[path] && [command]`. For example if the `package.json` is in the `next` folder you would run `cd ./next && yarn dev`.
+
+After the button is created, you can rollover your mouse to see what the script command is.
+
+![Screenshot 2022-09-02 at 18 15 04](https://user-images.githubusercontent.com/14803518/188205723-ab8d5db6-190c-4ec3-8660-e4a341f27d5c.png)
 
 #### Removing a button
 
@@ -44,8 +48,6 @@ Once selected, this will reload VS Code and remove the button from the status ba
 
 This is my first VS code extension and I used this project to learn and get the experience of the process.
 
-- Currently the extension does not seem to load the workspace state correctly. The buttons are there but only visually load after you trigger one of the add/delete button scripts and exit out of it. I am working on a fix for this.
-
 Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues) if you find any bugs or have any suggestions. This is a side project so expanding the features is unlikely, but feel free to fork and submit a PR if you can code it and I'd be happy to review it and add it in 🙏
 
 ## Socials
@@ -55,4 +57,5 @@ Feel free to follow me or if your feeling generous buy me a coffee!
 [Github](https://github.com/puyanwei)
 [Twitter](https://twitter.com/therealp_yan)
 [Medium blog](https://medium.com/@pyan)
-[Coffee](https://www.buymeacoffee.com/puyanwei)
+[Coffee ☕️](https://www.buymeacoffee.com/puyanwei)
+[Icon graphic designer](https://dribbble.com/madebyaaron)
