@@ -2,11 +2,11 @@
   "name": "quick-scripts",
   "displayName": "Quick Scripts - Make Status Bar Buttons to run Scripts",
   "description": "A script to create a status bar button which runs a script in the terminal",
-  "publisher": "pysoftwareltd",
+  "publisher": "puyanwei",
   "license": "MIT",
-  "repository": "https://github.com/puyanwei/quick-scripts-v2",
+  "repository": "https://github.com/puyanwei/quick-scripts",
   "bugs": {
-    "url": "https://github.com/puyanwei/quick-scripts-v2/issues"
+    "url": "https://github.com/puyanwei/quick-scripts/issues"
   },
   "version": "0.0.4",
   "engines": {
