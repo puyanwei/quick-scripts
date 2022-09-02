@@ -1,10 +1,8 @@
 import { commands, ExtensionContext } from 'vscode'
-import {
-  addButtonScript,
-  deleteButtonScript,
-  loadInitialState,
-} from './buttonScripts'
-import { resetStateScript, viewStateScript } from './debuggingHelpers'
+import { addButtonScript, deleteButtonScript } from './buttons'
+import { resetStateScript, viewStateScript } from './helpers'
+import { loadInitialState } from './state'
+import { createTerminalScript } from './terminal'
 
 export interface WorkspaceState {
   name: string
@@ -20,6 +18,11 @@ export async function activate(context: ExtensionContext) {
   const addButton = commands.registerCommand('extension.addButton', () =>
     addButtonScript(context)
   )
+
+  const createTerminal = commands.registerCommand(
+    'extension.createTerminal',
+    (...args) => createTerminalScript(...args)
+  )
   //debugging scripts
   const viewState = commands.registerCommand('extension.viewState', () =>
     viewStateScript(context)
@@ -28,7 +31,13 @@ export async function activate(context: ExtensionContext) {
     resetStateScript(context)
   )
 
-  context.subscriptions.push(addButton, deleteButton, viewState, resetState)
+  context.subscriptions.push(
+    addButton,
+    deleteButton,
+    viewState,
+    resetState,
+    createTerminal
+  )
 }
 
 export function deactivate() {}

@@ -1,5 +1,7 @@
 import { ExtensionContext } from 'vscode'
-import { getState } from './utilities'
+import { getState } from './state'
+
+// Helper functions for debugging
 
 export async function viewStateScript(context: ExtensionContext) {
   const state = await getState(context)

@@ -1,12 +1,21 @@
-import { window, ExtensionContext, commands } from 'vscode'
-import { resetStateScript } from './debuggingHelpers'
+import { window, ExtensionContext, commands, StatusBarAlignment } from 'vscode'
+import { resetStateScript } from './helpers'
 import { WorkspaceState } from './extension'
-import {
-  createButton,
-  addSingleObjectToState,
-  getState,
-  updateState,
-} from './utilities'
+import { getState, addSingleObjectToState, updateState } from './state'
+import { nameInput } from './terminal'
+
+export function createButton(name: string, command: string) {
+  const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, 0)
+  statusBar.text = name
+  statusBar.command = {
+    title: name,
+    command: `extension.createTerminal`,
+    arguments: [name, command],
+  }
+  statusBar.tooltip = command
+  statusBar.show()
+  return statusBar
+}
 
 export async function addButtonScript(context: ExtensionContext) {
   const command = await window.showInputBox({
@@ -46,30 +55,4 @@ export async function deleteButtonScript(context: ExtensionContext) {
   }
   commands.executeCommand('workbench.action.reloadWindow')
   return
-}
-
-async function nameInput() {
-  const input = await window.showInputBox({
-    prompt: 'Add the name of the button (max 5 characters)',
-  })
-
-  if (!input) {
-    window.showErrorMessage('No name provided')
-    return
-  }
-  if (input.length! > 5) {
-    window.showErrorMessage('Name is too long')
-    nameInput()
-  }
-  if (input.length < 6) return input
-  return
-}
-
-export async function loadInitialState(context: ExtensionContext) {
-  const initialState = await getState(context)
-  // Load button state(s) is there is any
-  if (!!initialState && initialState !== '') {
-    const workspaceState: WorkspaceState[] = await JSON.parse(initialState!)
-    workspaceState.forEach(({ name, command }) => createButton(name, command))
-  }
 }
