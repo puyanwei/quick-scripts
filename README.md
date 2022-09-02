@@ -2,6 +2,8 @@
 
 ![quick-scripts](https://user-images.githubusercontent.com/14803518/187287774-bc2ef2bd-94cb-421c-8f33-94b262259ec4.png)
 
+https://marketplace.visualstudio.com/items?itemName=puyanwei.quick-scripts
+
 Add buttons to the status bar to quickly execute scripts!
 
 I found it annoying constantly typing in the terminal or finding the NPM script sidebar button to run my scripts so I created this simple application.
