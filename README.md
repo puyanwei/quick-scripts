@@ -54,8 +54,5 @@ Feel free to open an [issue](https://github.com/puyanwei/quick-scripts-v2/issues
 
 Feel free to follow me or if your feeling generous buy me a coffee!
 
-[Github](https://github.com/puyanwei)
-[Twitter](https://twitter.com/therealp_yan)
-[Medium blog](https://medium.com/@pyan)
-[Coffee ☕️](https://www.buymeacoffee.com/puyanwei)
-[Icon graphic designer](https://dribbble.com/madebyaaron)
+| [Github](https://github.com/puyanwei) | [Twitter](https://twitter.com/therealp_yan) | [Medium blog](https://medium.com/@pyan) | [Coffee](https://www.buymeacoffee.com/puyanwei) | [Icon graphic designer](https://dribbble.com/madebyaaron) |
+| ------------------------------------- | ------------------------------------------- | --------------------------------------- | ----------------------------------------------- | --------------------------------------------------------- |
