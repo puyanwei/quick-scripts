@@ -1,11 +1,8 @@
 import { commands, ExtensionContext } from 'vscode'
-import {
-  addButtonScript,
-  deleteButtonScript,
-  loadInitialState,
-} from './buttonScripts'
-import { resetStateScript, viewStateScript } from './debuggingHelpers'
-import { createTerminalScript } from './utilities'
+import { addButtonScript, deleteButtonScript } from './buttons'
+import { resetStateScript, viewStateScript } from './helpers'
+import { loadInitialState } from './state'
+import { createTerminalScript } from './terminal'
 
 export interface WorkspaceState {
   name: string
